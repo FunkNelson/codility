@@ -17,6 +17,7 @@ cardStack = {
     'EBS': 'Elastic Block Store\nBlock-level storage volumes for use with EC2 instances\nProvides persistent storage that can be attached to and detached from instances\nSupports various volume types optimized for different performance and cost requirements',
     'RDS': 'Relational Database Service\nManaged relational database service\nSupports multiple database engines (MySQL, PostgreSQL, Oracle, SQL Server, etc.)\nHandles database administration tasks such as backups, patching, and scaling',
     'KMS': 'Key Management Service\nManaged service for creating and controlling encryption keys\nEnables secure encryption of data at rest and in transit\nIntegrates with other AWS services for seamless encryption management',
+    'IAM': 'Identity and Access Management\nManages access to AWS services and resources securely\nEnables creation of users, groups, and roles with specific permissions\nSupports multi-factor authentication (MFA) for enhanced security',
     'Secrets Manager': 'Service for securely storing and managing sensitive information such as database credentials, API keys, and other secrets\nProvides automatic rotation, secure access, and auditing capabilities\nIntegrates with AWS services and applications for seamless secret management',
     'Well-Architected Framework': 'Operational Excellence\nSecurity\nReliability\nPerformance Efficiency\nCost Optimization',
     'Fault Tolerance': 'Ability of a system to continue operating properly in the event of the failure of some of its components\nAchieved through redundancy, failover mechanisms, and distributed architectures\nMinimizes downtime and ensures high availability',
@@ -46,7 +47,6 @@ cardStack = {
     'Vertical Scaling': 'Increase compute capacity by migrating to larger instances',
     'CloudFront': 'Content Delivery Network (CDN)\nCaches copies of static content at Edge Locations globally\nReduces latency by serving content from nearest edge location to user',
     'CloudFormation': 'Infrastructure as Code (IaC)\nAutomates provisioning and management of AWS resources using templates\nEnables version control, repeatable deployments, and easier management of complex infrastructures',
-    'NACL': 'Network Access Control List\nStateless\nOperates at subnet level\nSupports allow and deny rules\nEvaluated before security groups',
     'EMR': 'Elastic Map Reduce\nManaged Hadoop framework\nProcesses large datasets across resizable clusters of EC2 instances\nUsed for big data analytics, machine learning, and data processing tasks',
     'SSH Key Pair': 'Authentication method for securely accessing EC2 instances\nConsists of a public key (stored on the instance) and a private key (held by the user)\nUsed to establish encrypted SSH connections to Linux instances',
     'Lambda': 'Serverless compute service\nRuns code in response to events without provisioning or managing servers\nAutomatically scales based on demand\nSupports multiple programming languages',
@@ -108,16 +108,16 @@ def displayCard(card):
 
 
 def printAnswer(card):
-    print('\n')
     print(cardStack[card])
-    print('\n')
 
 
 while session_active:
     random_card = random.choice(keys_list)
     displayCard(random_card)
     input('Press Enter to flip the card')
+    print('\n')
     printAnswer(random_card)
+    print('\n')
     nextCard = input('Another card? (Y/N)')
     if nextCard.lower() == 'n':
         session_active = False
